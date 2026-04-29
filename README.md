@@ -1,4 +1,3 @@
-cat <<EOF > README.md
 # Service Lifetimes in ASP.NET Core
 
 Bu proje, ASP.NET Core'da servis ömürlerini (**Transient**, **Scoped**, **Singleton**) somutlaştırmak ve Dependency Injection mekanizmasının nesne ömürlerini nasıl yönettiğini gözlemlemek amacıyla geliştirilmiştir.
