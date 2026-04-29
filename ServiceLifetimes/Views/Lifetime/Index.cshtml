@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "ASP.NET Core Service Lifetimes";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">ASP.NET Core Service Lifetimes</h1>
+        <p class="lead">Aynı HTTP isteği içerisindeki nesne ömürlerinin karşılaştırılması</p>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Servis Tipi (Lifetimes Döngüsü)</th>
+                        <th scope="col">1. Örnek (Instance)</th>
+                        <th scope="col">2. Örnek (Instance)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-warning">
+                        <td><strong>AddTransient</strong></td>
+                        <td><code class="text-dark">@ViewBag.Transient1</code></td>
+                        <td><code class="text-dark">@ViewBag.Transient2</code></td>
+                    </tr>
+                    
+                    <tr class="table-info">
+                        <td><strong>AddScoped</strong></td>
+                        <td><code class="text-dark">@ViewBag.Scoped1</code></td>
+                        <td><code class="text-dark">@ViewBag.Scoped2</code></td>
+                    </tr>
+
+                    <tr class="table-success">
+                        <td><strong>AddSingleton</strong></td>
+                        <td><code class="text-dark">@ViewBag.Singleton1</code></td>
+                        <td><code class="text-dark">@ViewBag.Singleton2</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer bg-light border-top-0">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="badge bg-warning text-dark">Transient</span>
+                    <p class="small mt-2">Her enjeksiyonda <strong>yeni bir nesne</strong> oluşturulduğu için ID'ler farklıdır.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="badge bg-info text-dark">Scoped</span>
+                    <p class="small mt-2">Aynı HTTP isteği içinde <strong>tek bir nesne</strong> paylaşıldığı için ID'ler aynıdır.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="badge bg-success text-dark">Singleton</span>
+                    <p class="small mt-2">Uygulama boyunca <strong>tek bir nesne</strong> yaşadığı için ID'ler her zaman aynıdır.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    code {
+        font-weight: bold;
+        word-break: break-all;
+    }
+    .table td, .table th {
+        vertical-align: middle;
+    }
+</style>
